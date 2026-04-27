@@ -434,7 +434,7 @@ function ScreenOffer({ amount, onAmount, term, onTerm, onPrimary, onBack, onDecl
             display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16,
           }}>
             <div style={{ fontSize: 14, color: FG2 }}>Loan amount</div>
-            <div style={{ fontSize: 44, fontWeight: 700, color: FOREST, letterSpacing: '-0.03em',
+            <div style={{ fontSize: 44, fontWeight: 700, color: 'var(--lumen-neutral-950)', letterSpacing: '-0.03em',
               lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
               {fmt(amount).replace(/[.,]00$/, '')}
             </div>
