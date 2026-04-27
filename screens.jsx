@@ -395,11 +395,11 @@ function ScreenHome({ onPrimary }) {
           </h3>
           <div style={{ background: SURFACE, borderRadius: 14, padding: '4px 16px',
             border: '1px solid #DEDCCE' }}>
-            <Tx name="SAS" date="22 Apr" amount="–€238.40" logo={<SASLogo />} />
+            <Tx name="SAS" date="Today" amount="–€238.40" logo={<SASLogo />} />
             <Divider />
             <Tx name="Uber" date="Yesterday" amount="–€29.12" logo={<UberLogo />} />
             <Divider />
-            <Tx name="Adobe Creative Cloud" date="Today" amount="–€59.99" logo={<AdobeCCLogo />} />
+            <Tx name="Adobe Creative Cloud" date="22 Apr" amount="–€59.99" logo={<AdobeCCLogo />} />
           </div>
         </div>
       </div>
