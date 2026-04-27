@@ -1,0 +1,236 @@
+/* =============================================================
+   Lumen Design System — Foundations
+   Colors, Typography, Shadows, Radii, Spacing
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ========== BASE ========== */
+  --lumen-black: #000000;
+  --lumen-white: #FFFFFF;
+
+  /* Neutral scale */
+  --lumen-neutral-50:  #F7F8F8;
+  --lumen-neutral-100: #EDEEF1;
+  --lumen-neutral-150: #E3E5E9;
+  --lumen-neutral-200: #D8DBDF;
+  --lumen-neutral-300: #B6BAC3;
+  --lumen-neutral-400: #8E95A2;
+  --lumen-neutral-500: #6B7280;
+  --lumen-neutral-600: #5B616E;
+  --lumen-neutral-700: #4A4E5A;
+  --lumen-neutral-800: #40444C;
+  --lumen-neutral-900: #383A42;
+  --lumen-neutral-950: #25272C;
+
+  /* Accent (brand blue) */
+  --lumen-accent-50:  #F0F4FE;
+  --lumen-accent-100: #DDE6FC;
+  --lumen-accent-200: #C2D4FB;
+  --lumen-accent-300: #99B9F7;
+  --lumen-accent-400: #6894F2;
+  --lumen-accent-500: #3A66EB;
+  --lumen-accent-600: #2F50E1;
+  --lumen-accent-700: #273DCE;
+  --lumen-accent-800: #2633A7;
+  --lumen-accent-900: #243084;
+  --lumen-accent-950: #1A2051;
+
+  /* Success (green) */
+  --lumen-success-50:  #EDFBF2;
+  --lumen-success-100: #C9EEDA;
+  --lumen-success-200: #9ADFB9;
+  --lumen-success-300: #63D198;
+  --lumen-success-400: #3FC57F;
+  --lumen-success-500: #25BA66;
+  --lumen-success-600: #1B9C52;
+  --lumen-success-700: #198447;
+  --lumen-success-800: #0F5F35;
+  --lumen-success-900: #074629;
+
+  /* Danger (red/orange) */
+  --lumen-danger-50:  #FFF3F1;
+  --lumen-danger-100: #FFE4DF;
+  --lumen-danger-200: #FFCEC5;
+  --lumen-danger-300: #FDA597;
+  --lumen-danger-400: #FF7A63;
+  --lumen-danger-500: #F42500;
+  --lumen-danger-600: #F04325;
+  --lumen-danger-700: #C9280C;
+  --lumen-danger-800: #A6240E;
+  --lumen-danger-900: #892412;
+
+  /* Warning (yellow) */
+  --lumen-warning-50:  #FFFDE7;
+  --lumen-warning-100: #FFFAC2;
+  --lumen-warning-200: #FFF389;
+  --lumen-warning-300: #FFE545;
+  --lumen-warning-400: #F8D21E;
+  --lumen-warning-500: #ECB806;
+  --lumen-warning-600: #CA9A04;
+  --lumen-warning-700: #A17827;
+  --lumen-warning-800: #67481B;
+  --lumen-warning-900: #513516;
+
+  /* Information (sky) */
+  --lumen-info-50:  #EAF5FE;
+  --lumen-info-100: #CDE6FD;
+  --lumen-info-200: #A3D1FB;
+  --lumen-info-300: #5FB0F6;
+  --lumen-info-400: #2FA0F2;
+  --lumen-info-500: #0C8CE9;
+  --lumen-info-600: #0A6FBC;
+  --lumen-info-700: #0A5B9A;
+  --lumen-info-800: #084876;
+  --lumen-info-900: #063657;
+
+  /* Highlights */
+  --lumen-purple-100: #EEECFB;
+  --lumen-purple-200: #E0DCF8;
+  --lumen-purple-300: #C7BFF3;
+  --lumen-purple-400: #AB9BEA;
+  --lumen-purple-500: #9777E0;
+  --lumen-purple-600: #835CD6;
+  --lumen-purple-700: #6C41C0;
+  --lumen-purple-800: #5B36A1;
+  --lumen-purple-900: #4C2E84;
+
+  --lumen-magenta-100: #FDE6E9;
+  --lumen-magenta-500: #E83D74;
+  --lumen-magenta-600: #D5295B;
+
+  --lumen-beige-100: #F2EEE2;
+  --lumen-beige-200: #E8E2CD;
+  --lumen-beige-300: #D4CBAB;
+
+  --lumen-lime-100: #E0F8CF;
+  --lumen-lime-500: #56C521;
+
+  --lumen-cyan-100: #E2F3FC;
+  --lumen-cyan-500: #11A4D6;
+
+  --lumen-orange-100: #FFEDC6;
+  --lumen-orange-500: #DD5C02;
+
+  /* Signature brand */
+  --lumen-brand-yellow: #FFF389;
+  --lumen-brand-ink: #25241D;
+  --lumen-brand-forest: #00362C;
+  --lumen-brand-canvas: #FBF8F3;
+
+  /* ========== SEMANTIC — LIGHT ========== */
+  --fg-primary: #25272C;
+  --fg-secondary: #4A4E5A;
+  --fg-tertiary: #6B7280;
+  --fg-disabled: #B6BAC3;
+  --fg-on-accent: #FFFFFF;
+  --fg-accent: #2F50E1;
+  --fg-accent-strong: #2633A7;
+  --fg-danger: #F04325;
+  --fg-success: #198447;
+  --fg-warning: #A17827;
+  --fg-info: #0A6FBC;
+
+  --bg-base: #FBF8F3;
+  --bg-surface: #FFFFFF;
+  --bg-muted: #F7F8F8;
+  --bg-subtle: #EDEEF1;
+  --bg-inverse: #25272C;
+  --bg-accent-subtle: #DDE6FC;
+  --bg-accent-soft: #C2D4FB;
+  --bg-accent-medium: #2F50E1;
+  --bg-danger-subtle: #FFE4DF;
+  --bg-success-subtle: #C9EEDA;
+  --bg-warning-subtle: #FFFAC2;
+  --bg-info-subtle: #CDE6FD;
+
+  --border-subtle: #EDEEF1;
+  --border-default: #D8DBDF;
+  --border-strong: #383A42;
+  --border-accent: #2F50E1;
+  --border-focus: #000000;
+  --border-danger: #F04325;
+  --border-success: #25BA66;
+  --border-warning: #ECB806;
+
+  /* ========== RADII ========== */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-pill: 9999px;
+
+  /* ========== SHADOWS ========== */
+  --shadow-xs: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(16, 24, 40, 0.08), 0 1px 2px -1px rgba(16, 24, 40, 0.03);
+  --shadow-md: 0 4px 8px -2px rgba(16, 24, 40, 0.08), 0 2px 4px -2px rgba(16, 24, 40, 0.03);
+  --shadow-lg: 0 12px 16px -4px rgba(16, 24, 40, 0.08), 0 4px 6px -2px rgba(16, 24, 40, 0.03);
+  --shadow-xl: 0 20px 24px -4px rgba(16, 24, 40, 0.08), 0 8px 8px -4px rgba(16, 24, 40, 0.03);
+  --shadow-2xl: 0 24px 48px -12px rgba(16, 24, 40, 0.18);
+  --shadow-focus: 0 0 0 3px rgba(47, 80, 225, 0.32);
+
+  /* ========== SPACING ========== */
+  --space-0: 0;
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 12px;
+  --space-5: 16px;
+  --space-6: 20px;
+  --space-7: 24px;
+  --space-8: 32px;
+  --space-9: 40px;
+  --space-10: 48px;
+  --space-11: 64px;
+  --space-12: 80px;
+  --space-13: 96px;
+
+  /* ========== TYPE ========== */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono-ui: 'Space Grotesk', 'Mabry Pro', 'Inter', sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+
+  --text-h1-size: 32px;      --text-h1-lh: 40px;  --text-h1-weight: 600;
+  --text-h2-size: 24px;      --text-h2-lh: 32px;  --text-h2-weight: 600;
+  --text-h3-size: 20px;      --text-h3-lh: 28px;  --text-h3-weight: 600;
+  --text-h4-size: 18px;      --text-h4-lh: 24px;  --text-h4-weight: 600;
+  --text-body-lg-size: 16px; --text-body-lg-lh: 24px;
+  --text-body-md-size: 14px; --text-body-md-lh: 20px;
+  --text-body-sm-size: 12px; --text-body-sm-lh: 16px;
+
+  --text-display-size: 48px; --text-display-lh: 52px; --text-display-weight: 500;
+
+  --text-m-h1-size: 28px;
+  --text-m-h2-size: 20px;
+  --text-m-h3-size: 18px;
+}
+
+html { font-family: var(--font-sans); color: var(--fg-primary); background: var(--bg-base); }
+body { margin: 0; font-size: var(--text-body-md-size); line-height: var(--text-body-md-lh); -webkit-font-smoothing: antialiased; }
+*, *::before, *::after { box-sizing: border-box; }
+
+h1, .lumen-h1 {
+  font-family: var(--font-display); font-weight: var(--text-h1-weight);
+  font-size: var(--text-h1-size); line-height: var(--text-h1-lh);
+  letter-spacing: -0.02em; margin: 0; color: var(--fg-primary);
+}
+h2, .lumen-h2 {
+  font-family: var(--font-display); font-weight: var(--text-h2-weight);
+  font-size: var(--text-h2-size); line-height: var(--text-h2-lh);
+  letter-spacing: -0.015em; margin: 0; color: var(--fg-primary);
+}
+h3, .lumen-h3 {
+  font-family: var(--font-display); font-weight: var(--text-h3-weight);
+  font-size: var(--text-h3-size); line-height: var(--text-h3-lh);
+  letter-spacing: -0.01em; margin: 0; color: var(--fg-primary);
+}
+h4, .lumen-h4 {
+  font-family: var(--font-display); font-weight: var(--text-h4-weight);
+  font-size: var(--text-h4-size); line-height: var(--text-h4-lh);
+  margin: 0; color: var(--fg-primary);
+}
+p { margin: 0; font-size: var(--text-body-md-size); line-height: var(--text-body-md-lh); color: var(--fg-secondary); }
