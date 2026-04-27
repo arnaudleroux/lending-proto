@@ -45,6 +45,7 @@ function StatusBar({ dark = false }) {
       position: 'absolute', top: 0, left: 0, right: 0, height: 44, zIndex: 5,
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       padding: '0 24px', pointerEvents: 'none',
+      background: 'var(--lumen-neutral-50)',
     }}>
       <span style={{ fontFamily: '-apple-system, "SF Pro", system-ui', fontWeight: 600,
         fontSize: 15, color: c, letterSpacing: '-0.01em' }}>9:41</span>
@@ -515,10 +516,7 @@ function ScreenOffer({ amount, onAmount, term, onTerm, onPrimary, onBack, onDecl
 
       <BottomCta>
         <PrimaryButton onClick={onPrimary}>Accept offer</PrimaryButton>
-        <div style={{ display: 'flex', marginTop: 4 }}>
-          <TextButton color={ACCENT_HOVER}>Adjust terms</TextButton>
-          <TextButton onClick={onDecline} color={FG2}>Decline</TextButton>
-        </div>
+        <TextButton onClick={onDecline} color={FG2}>Decline</TextButton>
       </BottomCta>
     </ScreenShell>
   );
