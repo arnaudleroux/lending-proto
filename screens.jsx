@@ -12,6 +12,13 @@ const FG = 'var(--fg-primary)';                  // #25272C
 const FG2 = 'var(--fg-tertiary)';                // #6B7280
 const BORDER = 'var(--border-subtle)';           // #EDEEF1
 const BORDER2 = 'var(--border-default)';         // #D8DBDF
+const N50  = 'var(--lumen-neutral-50)';   // #F7F8F8
+const N100 = 'var(--lumen-neutral-100)';  // #EDEEF1
+const N150 = 'var(--lumen-neutral-150)';  // #E3E5E9
+const N300 = 'var(--lumen-neutral-300)';  // #B6BAC3
+const N500 = 'var(--lumen-neutral-500)';  // #6B7280
+const N800 = 'var(--lumen-neutral-800)';  // #40444C
+const N950 = 'var(--lumen-neutral-950)';  // #25272C
 
 // ────────────────────────────────────────────────────────────────────────────
 // Shared primitives
@@ -34,6 +41,14 @@ function Icon({ name, size = 20, color = 'currentColor', stroke = 1.75 }) {
     case 'send':        return <svg {...p}><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>;
     case 'receive':     return <svg {...p}><path d="M17 7 7 17"/><path d="M17 17H7V7"/></svg>;
     case 'bank':        return <svg {...p}><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>;
+    case 'plus':        return <svg {...p}><path d="M12 5v14"/><path d="M5 12h14"/></svg>;
+    case 'chev-right':  return <svg {...p}><path d="m9 6 6 6-6 6"/></svg>;
+    case 'home':        return <svg {...p}><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1Z"/></svg>;
+    case 'transfer':    return <svg {...p}><path d="M3 7h14"/><path d="m13 3 4 4-4 4"/><path d="M21 17H7"/><path d="m11 21-4-4 4-4"/></svg>;
+    case 'file-text':   return <svg {...p}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h6"/></svg>;
+    case 'apps':        return <svg {...p}><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>;
+    case 'external':    return <svg {...p}><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>;
+    case 'landmark':    return <svg {...p}><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>;
     default: return null;
   }
 }
@@ -299,112 +314,325 @@ function ActionPill({ icon, label }) {
 
 function ScreenHome({ onPrimary }) {
   return (
-    <ScreenShell>
+    <ScreenShell bg={N50}>
       <ScrollArea>
-      <div style={{ paddingTop: 52 }}>
-        {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '12px 18px 4px' }}>
-          <ShineLogo />
-          <div style={{ display: 'flex', gap: 8 }}>
-            <HeaderIcon><Icon name="eye" size={18} stroke={1.8} /></HeaderIcon>
-            <HeaderIcon><Icon name="bell" size={18} stroke={1.8} /></HeaderIcon>
-            <HeaderIcon><Icon name="user" size={18} stroke={1.8} /></HeaderIcon>
+        <div style={{ paddingTop: 52 }}>
+          {/* Top bar */}
+          <div style={{ display: 'flex', justifyContent: 'space-between',
+            alignItems: 'center', padding: '8px 16px' }}>
+            <SquireBtn>
+              <Icon name="user" size={20} stroke={1.8} />
+            </SquireBtn>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <SquireBtn>
+                <Icon name="eye" size={20} stroke={1.8} />
+              </SquireBtn>
+              <SquireBtn>
+                <Icon name="bell" size={20} stroke={1.8} />
+              </SquireBtn>
+            </div>
           </div>
-        </div>
 
-        {/* Accounts card */}
-        <div style={{ padding: '14px 18px 0' }}>
-          <div style={{
-            borderRadius: 18, border: '1px solid var(--lumen-neutral-150)',
-            background: SURFACE, overflow: 'hidden',
-          }}>
+          {/* Accounts */}
+          <div style={{ padding: '24px 16px 16px' }}>
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ fontSize: 14, fontWeight: 600, color: N800,
+                letterSpacing: '-0.005em' }}>Accounts</div>
+              <div style={{ fontSize: 12, color: N500, marginTop: 4 }}>
+                Total balance: €1,425.49
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: 16, alignItems: 'stretch' }}>
+              <MainAccountCard amount="€1,425.49" ibanSuffix="142" />
+              <AddAccountCard />
+            </div>
+          </div>
+
+          {/* Pre-approved loan offer card */}
+          <div style={{ padding: '0 16px 0' }}>
             <div style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              padding: '14px 18px', background: 'var(--lumen-neutral-50)',
-              borderBottom: '1px solid var(--lumen-neutral-150)',
+              background: SURFACE, border: `1.5px solid ${SUCCESS_100}`, borderRadius: 16,
+              padding: 20,
             }}>
-              <span style={{ fontSize: 16, fontWeight: 500, color: '#25241D', letterSpacing: '-0.005em' }}>
-                Accounts
-              </span>
-              <Icon name="chev-down" size={20} color="#25241D" stroke={1.6} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14,
+                flexWrap: 'nowrap' }}>
+                <Pill bg={SUCCESS_100} fg={SUCCESS}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: SUCCESS, flexShrink: 0 }} />
+                  <span style={{ whiteSpace: 'nowrap' }}>Financing</span>
+                </Pill>
+                <span style={{ fontSize: 12, color: N500, marginLeft: 'auto', whiteSpace: 'nowrap' }}>
+                  Personalised for you
+                </span>
+              </div>
+
+              <h2 style={{ margin: 0, fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em',
+                color: N950, lineHeight: '1.15' }}>
+                You&apos;re pre-approved<br/>for a loan
+              </h2>
+
+              <div style={{ display: 'flex', gap: 32, marginTop: 16, marginBottom: 18 }}>
+                <KV label="Up to" value="€10,000" />
+                <KV label="Interest rate" value="9% APR" />
+              </div>
+
+              <PrimaryButton onClick={onPrimary}>See your offer</PrimaryButton>
             </div>
-            <button style={{
-              all: 'unset', cursor: 'pointer', display: 'flex', width: '100%',
-              alignItems: 'flex-start', justifyContent: 'space-between',
-              padding: '16px 18px', boxSizing: 'border-box',
-            }}>
-              <div>
-                <div style={{ fontSize: 16, fontWeight: 500, color: '#25241D', letterSpacing: '-0.005em' }}>
-                  Balance
-                </div>
-                <div style={{ fontSize: 28, fontWeight: 700, color: '#25241D',
-                  letterSpacing: '-0.02em', marginTop: 12, fontVariantNumeric: 'tabular-nums' }}>
-                  €1,425.49
+          </div>
+
+          {/* Last transactions */}
+          <SectionBlock title="Last transactions">
+            <div style={{ background: '#fff', borderRadius: 16, padding: '4px 16px' }}>
+              <Tx name="SAS" date="Today" amount="–€238.40" logo={<SASLogo />} />
+              <Divider />
+              <Tx name="Uber" date="Yesterday" amount="–€29.12" logo={<UberLogo />} />
+              <Divider />
+              <Tx name="Adobe Creative Cloud" date="22 Apr" amount="–€59.99" logo={<AdobeCCLogo />} />
+            </div>
+          </SectionBlock>
+
+          {/* Cards */}
+          <SectionBlock title="Cards">
+            <div style={{ background: '#fff', borderRadius: 16, padding: 16,
+              display: 'flex', alignItems: 'center', gap: 12 }}>
+              <MiniCardArt small />
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 14, fontWeight: 600, color: N800 }}>Virtual</div>
+                <div style={{ fontSize: 12, color: N500, marginTop: 2,
+                  fontVariantNumeric: 'tabular-nums' }}>
+                  1009··142
                 </div>
               </div>
-              <div style={{ paddingTop: 4 }}>
-                <Icon name="arrow-right" size={20} color="#25241D" stroke={1.6} />
-              </div>
-            </button>
-          </div>
-        </div>
-
-        {/* Actions row */}
-        <div style={{ padding: '24px 18px 4px', display: 'flex', gap: 12 }}>
-          <ActionPill label="Send" icon={<Icon name="send" size={24} stroke={1.5} />} />
-          <ActionPill label="Receive" icon={<Icon name="receive" size={24} stroke={1.5} />} />
-          <ActionPill label="View IBAN" icon={<Icon name="bank" size={24} stroke={1.5} />} />
-        </div>
-
-        {/* Pre-approved loan card */}
-        <div style={{ padding: '20px 18px 0' }}>
-          <div style={{
-            background: SURFACE, border: `1.5px solid ${SUCCESS_100}`, borderRadius: 18,
-            padding: 20,
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14,
-              flexWrap: 'nowrap' }}>
-              <Pill bg={SUCCESS_100} fg={SUCCESS}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: SUCCESS, flexShrink: 0 }} />
-                <span style={{ whiteSpace: 'nowrap' }}>Pre-approved</span>
-              </Pill>
-              <span style={{ fontSize: 12, color: FG2, marginLeft: 'auto', whiteSpace: 'nowrap' }}>
-                Personalised for you
-              </span>
+              <Icon name="chev-right" size={18} stroke={2} color={N500} />
             </div>
+          </SectionBlock>
 
-            <h2 style={{ margin: 0, fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em',
-              color: '#25241D', lineHeight: '1.15' }}>
-              You&apos;re pre-approved<br/>for a loan
-            </h2>
-
-            <div style={{ display: 'flex', gap: 32, marginTop: 16, marginBottom: 18 }}>
-              <KV label="Up to" value="€10,000" />
-              <KV label="Interest rate" value="9% APR" />
+          {/* Partners */}
+          <SectionBlock title="Partners">
+            <div style={{ display: 'flex', gap: 16, alignItems: 'stretch' }}>
+              <PartnerCard
+                logo={<AlanLogo />}
+                name="Alan"
+                desc="Covers part of the healthcare costs not reimbursed by social security." />
+              <PartnerCard
+                logo={<KeobizLogo />}
+                name="Keobiz"
+                desc="Simplifies bookkeeping and business tracking." />
             </div>
-
-            <PrimaryButton onClick={onPrimary}>See your offer</PrimaryButton>
-          </div>
+          </SectionBlock>
         </div>
+      </ScrollArea>
 
-        {/* Recent activity */}
-        <div style={{ padding: '20px 18px 24px' }}>
-          <h3 style={{ margin: '0 0 10px', fontSize: 15, fontWeight: 600, color: '#25241D', letterSpacing: '-0.005em' }}>
-            Recent activity
-          </h3>
-          <div style={{ background: SURFACE, borderRadius: 14, padding: '4px 16px',
-            border: '1px solid #DEDCCE' }}>
-            <Tx name="SAS" date="Today" amount="–€238.40" logo={<SASLogo />} />
-            <Divider />
-            <Tx name="Uber" date="Yesterday" amount="–€29.12" logo={<UberLogo />} />
-            <Divider />
-            <Tx name="Adobe Creative Cloud" date="22 Apr" amount="–€59.99" logo={<AdobeCCLogo />} />
-          </div>
+      <BottomTabBar />
+    </ScreenShell>
+  );
+}
+
+// ── Top bar squircle button ────────────────────────────────────────────────
+
+function SquireBtn({ children, onClick }) {
+  return (
+    <button onClick={onClick} style={{
+      all: 'unset', cursor: 'pointer',
+      width: 44, height: 44, borderRadius: 14,
+      background: '#fff', color: N950,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      boxSizing: 'border-box',
+    }}>
+      {children}
+    </button>
+  );
+}
+
+// ── Mini card art (used in Cards row) ──────────────────────────────────────
+
+function MiniCardArt({ small }) {
+  const w = small ? 36 : 32;
+  const h = small ? 24 : 22;
+  return (
+    <div style={{
+      width: w, height: h, borderRadius: 4, position: 'relative',
+      background: 'linear-gradient(135deg, #0f5f35 0%, #074629 60%, #25241D 100%)',
+      overflow: 'hidden',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.08)',
+    }}>
+      <div style={{
+        position: 'absolute', top: 5, left: 4,
+        width: 6, height: 4, borderRadius: 1, background: 'rgba(255,255,255,0.45)',
+      }} />
+      <div style={{
+        position: 'absolute', bottom: 3, right: 3,
+      }}>
+        <VisaMark width={small ? 14 : 12} />
+      </div>
+    </div>
+  );
+}
+
+// ── Account cards ──────────────────────────────────────────────────────────
+
+function MainAccountCard({ amount, ibanSuffix }) {
+  return (
+    <div style={{
+      flex: '2 1 0', minWidth: 0,
+      background: '#fff', borderRadius: 16, padding: 16,
+      display: 'flex', flexDirection: 'column', gap: 16,
+    }}>
+      <div style={{
+        width: 44, height: 44, borderRadius: 14, background: N50,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        position: 'relative', overflow: 'hidden',
+      }}>
+        <img src="Wallet.svg" alt="Wallet" width={36} height={36}
+          style={{ display: 'block', objectFit: 'contain' }} />
+      </div>
+      <div>
+        <div style={{ fontSize: 14, fontWeight: 600, color: N800,
+          letterSpacing: '-0.005em' }}>Main account</div>
+        <div style={{ fontSize: 24, fontWeight: 700, color: N950,
+          letterSpacing: '-0.02em', marginTop: 4,
+          fontVariantNumeric: 'tabular-nums' }}>{amount}</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 6 }}>
+          <Icon name="landmark" size={12} stroke={1.8} color={N500} />
+          <span style={{ fontSize: 12, color: N500, fontVariantNumeric: 'tabular-nums' }}>
+            FR··{ibanSuffix}
+          </span>
         </div>
       </div>
-      </ScrollArea>
-    </ScreenShell>
+    </div>
+  );
+}
+
+function AddAccountCard() {
+  return (
+    <div style={{
+      flex: '1 1 0', minWidth: 0,
+      borderRadius: 16, padding: 16,
+      border: `1.5px dashed ${N300}`,
+      display: 'flex', flexDirection: 'column', gap: 16,
+      background: 'transparent',
+    }}>
+      <div style={{
+        width: 44, height: 44, borderRadius: 14,
+        border: `1.5px dashed ${N300}`,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        color: N500,
+      }}>
+        <Icon name="plus" size={20} stroke={2} />
+      </div>
+      <div>
+        <div style={{ fontSize: 14, fontWeight: 600, color: N800,
+          letterSpacing: '-0.005em' }}>Add account</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 22 }}>
+          <Icon name="landmark" size={12} stroke={1.8} color={N300} />
+          <span style={{ fontSize: 12, color: N300 }}>FR··</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Section block ──────────────────────────────────────────────────────────
+
+function SectionBlock({ title, children }) {
+  return (
+    <div style={{ padding: '16px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
+        <span style={{ fontSize: 14, fontWeight: 600, color: N800,
+          letterSpacing: '-0.005em' }}>{title}</span>
+        <Icon name="chev-right" size={16} stroke={2} color={N500} />
+      </div>
+      {children}
+    </div>
+  );
+}
+
+// ── Partner cards ──────────────────────────────────────────────────────────
+
+function PartnerCard({ logo, name, desc }) {
+  return (
+    <div style={{
+      flex: '1 1 0', minWidth: 0,
+      background: '#fff', borderRadius: 16, padding: 16,
+      display: 'flex', flexDirection: 'column', gap: 14, position: 'relative',
+      minHeight: 200,
+    }}>
+      <div style={{
+        width: 44, height: 44, borderRadius: 12,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        overflow: 'hidden', flexShrink: 0,
+      }}>
+        {logo}
+      </div>
+      <div style={{ flex: 1 }}>
+        <div style={{ fontSize: 14, fontWeight: 600, color: N800,
+          letterSpacing: '-0.005em' }}>{name}</div>
+        <div style={{ fontSize: 12, color: N500, marginTop: 6, lineHeight: 1.4 }}>
+          {desc}
+        </div>
+      </div>
+      <div style={{ position: 'absolute', right: 12, bottom: 12, color: N500 }}>
+        <Icon name="external" size={16} stroke={1.8} />
+      </div>
+    </div>
+  );
+}
+
+function AlanLogo() {
+  return (
+    <img src="alan.png" alt="Alan" width={44} height={44}
+      style={{ borderRadius: 12, display: 'block', objectFit: 'cover' }} />
+  );
+}
+
+function KeobizLogo() {
+  return (
+    <img src="keobiz.png" alt="Keobiz" width={44} height={44}
+      style={{ borderRadius: 12, display: 'block', objectFit: 'cover' }} />
+  );
+}
+
+// ── Visa mark ──────────────────────────────────────────────────────────────
+
+function VisaMark({ width = 52 }) {
+  return (
+    <svg width={width} viewBox="0 0 1000 324.68" xmlns="http://www.w3.org/2000/svg"
+      aria-label="Visa" style={{ display: 'block' }}>
+      <path fill="#fff" d="m651.19.5c-70.93,0-134.32,36.77-134.32,104.69,0,77.9,112.42,83.28,112.42,122.42,0,16.48-18.88,31.23-51.14,31.23-45.77,0-79.98-20.61-79.98-20.61l-14.64,68.55s39.41,17.41,91.73,17.41c77.55,0,138.58-38.57,138.58-107.66,0-82.32-112.89-87.54-112.89-123.86,0-12.91,15.5-27.05,47.66-27.05,36.29,0,65.89,14.99,65.89,14.99l14.33-66.2S696.61.5,651.18.5h0ZM2.22,5.5L.5,15.49s29.84,5.46,56.72,16.36c34.61,12.49,37.07,19.77,42.9,42.35l63.51,244.83h85.14L379.93,5.5h-84.94l-84.28,213.17-34.39-180.7c-3.15-20.68-19.13-32.48-38.68-32.48,0,0-135.41,0-135.41,0Zm411.87,0l-66.63,313.53h81L494.85,5.5h-80.76Zm451.76,0c-19.53,0-29.88,10.46-37.47,28.73l-118.67,284.8h84.94l16.43-47.47h103.48l9.99,47.47h74.95L934.12,5.5h-68.27Zm11.05,84.71l25.18,117.65h-67.45l42.28-117.65h0Z"/>
+    </svg>
+  );
+}
+
+// ── Bottom tab bar ─────────────────────────────────────────────────────────
+
+function BottomTabBar() {
+  const tabs = [
+    { name: 'home', label: 'Home', active: true },
+    { name: 'transfer', label: 'Transfer' },
+    { name: 'file-text', label: 'Invoices' },
+    { name: 'apps', label: 'Plus' },
+  ];
+  return (
+    <div style={{
+      flexShrink: 0, background: '#fff',
+      borderTop: `1px solid ${N100}`,
+      padding: '8px 0 22px',
+      display: 'flex', alignItems: 'center',
+    }}>
+      {tabs.map((t) => (
+        <button key={t.name} style={{
+          all: 'unset', cursor: 'pointer', flex: 1,
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
+          padding: '6px 0',
+          color: t.active ? N950 : N500,
+        }}>
+          <Icon name={t.name} size={22} stroke={t.active ? 2 : 1.7} />
+          <span style={{
+            fontSize: 11, fontWeight: t.active ? 600 : 500,
+            letterSpacing: '-0.005em',
+          }}>{t.label}</span>
+        </button>
+      ))}
+    </div>
   );
 }
 
